@@ -7,6 +7,7 @@
     <title>Login::MS</title>
     <link rel="stylesheet" href="{{asset('css/front/bootstrap.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{asset('css/front/style.css')}}" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="1.png" type="image/x-icon">
 </head>
 <body>
     <div class="container">

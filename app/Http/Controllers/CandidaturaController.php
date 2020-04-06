@@ -32,7 +32,7 @@ class CandidaturaController extends Controller
     public function create()
     {
         //
-        return view('candidatura')->with('success','Candidatura Submetida com sucesso.');
+        return view('candidatura');
     }
 
     /**
@@ -53,7 +53,7 @@ class CandidaturaController extends Controller
             //$request->cv->storeAs('cvs', $candidatura->id . '.' . $request->cv->extension());
         }
 
-        return redirect()->route('candidatura.create');
+        return redirect()->route('candidatura.create')->with('success','Candidatura Submetida com sucesso.');
     }
 
     /**

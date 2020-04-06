@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="">
     <meta name="author" content="">
-
+  <link rel="shortcut icon" href="1.png" type="image/x-icon">
     <title>Candidaturas</title>
 
     <!-- Custom fonts for this template -->
@@ -38,7 +38,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Dash Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">MStability</div>
       </a>
 
       <!-- Divider -->
