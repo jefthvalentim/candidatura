@@ -32,7 +32,7 @@ class CandidaturaController extends Controller
     public function create()
     {
         //
-        return view('candidatura');
+        return view('candidatura')->with('success','Candidatura Submetida com sucesso.');
     }
 
     /**

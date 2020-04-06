@@ -15,6 +15,16 @@
                 </div>
             </div>
             <div class="col-md-8">
+                @if (session()->has('success'))
+                    <div class="col-sm-12">
+                        <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                    </div>
+                @endif
                  <div class="page-apresentation-form shadow p-3">
                     <h4 class="text-uppercase font-weight-bold text-center">junte-se a <span class="text-black">nós</span></h4>
                     <form action="{{ route('candidatura.store') }}" method="POST" enctype="multipart/form-data">
