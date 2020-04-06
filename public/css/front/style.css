@@ -1,0 +1,38 @@
+body{
+    color:#857550
+}
+.page-apresentation img{
+    width: 100%;
+    height: 100vh;
+}
+.text-black{
+    color: #000 !important;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #857550 !important;
+    border-color: #857550 !important
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #5c533d !important;
+    border-color: #5c533d !important
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    color: #fff;
+    background-color: #857550 !important;
+    border-color: #857550 !important;
+    box-shadow: 0 0 0 .2rem rgba(170, 172, 175, 0.5) !important
+}
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #857550 !important;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(170, 172, 175, 0.5) !important
+}
+.input-radius{
+    border-radius: 50px;
+}
