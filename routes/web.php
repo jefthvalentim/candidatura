@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'CandidaturaController@create')->name('candidatura.create');
 Route::post('/', 'CandidaturaController@store')->name('candidatura.store');
 Route::get('/candidaturas', 'CandidaturaController@index')->name('candidatura.index');
+Route::get('/candidaturas/{candidatura}', 'CandidaturaController@destroy')->name('candidatura.destroy');
 
 Auth::routes();
 
