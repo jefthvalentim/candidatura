@@ -27,6 +27,7 @@
                       <th>Carta motivacional</th>
                       <th>Vaga</th>
                       <th>CV</th>
+                      <th></th>
                     </tr>
                   </thead>
                  
