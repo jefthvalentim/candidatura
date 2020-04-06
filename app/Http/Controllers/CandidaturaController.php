@@ -13,13 +13,14 @@ class CandidaturaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __construct(){
-        $this->middleware('auth')->except(['create', 'store']);
+       // $this->middleware('auth')->except(['create', 'store']);
+        $this->middleware('auth')->only(['index']);
     }
 
     public function index()
     {
         //
-        $candidaturas = Candidatura::get();
+        $candidaturas = Candidatura::orderBy('id', 'DESC')->get();
         return view('candidaturas', compact('candidaturas')); 
     }
 
@@ -45,10 +46,14 @@ class CandidaturaController extends Controller
         //
         $candidatura = Candidatura::create($request->all());
 
-        if($candidatura)
-            $request->cv->storeAs('cvs', $candidatura->id . '.' . $request->cv->extension());
+        if($candidatura){
+            $fileName = $request->cv->storeAs('public/cvs', $candidatura->id . '.' . $request->cv->extension());
+            $candidatura->cv = $candidatura->id . '.' . $request->cv->extension();
+            $candidatura->save();
+            //$request->cv->storeAs('cvs', $candidatura->id . '.' . $request->cv->extension());
+        }
 
-        return redirect()->back();
+        return redirect()->route('candidatura.create');
     }
 
     /**
@@ -91,8 +96,10 @@ class CandidaturaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Candidatura $candidatura)
     {
         //
+        $candidatura->delete();
+        return redirect()->route('candidatura.index');
     }
 }
