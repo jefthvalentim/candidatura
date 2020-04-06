@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Sobrenome <span class="text-danger">*</span></label>
-                                <input type="text" name="second_name" class="form-control" required="required">
+                                <input type="text" name="last_name" class="form-control" required="required">
                             </div>
                         </div>
                         <div class="form-row">
@@ -54,22 +54,24 @@
                             <label for="">Carta motivacional</label>
                             <textarea class="form-control" name="motivational_letter" id="" rows="5" ></textarea>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label>Escolha a Vaga <span class="text-danger">*</span></label>
                                 <select class="form-control" name="vaga" id="" required="required">
-                                    <option></option>
-                                    <option></option>
-                                    <option></option>
+                                    <option>Vaga 1</option>
+                                    <option>Vaga 2</option>
+                                    <option>Vaga 3</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="">Carregar CV <span class="text-danger">*</span></label>
-                                <input type="file" name="resume" class="form-control" accept=".pdf" required="required">
+                                <input type="file" name="cv" class="form-control" accept=".pdf" required="required">
                             </div>
-                            <div class="form-group col-md-4">
+                           <!-- 
+                               <div class="form-group col-md-4">
                                 <label for="">Carregar Certificações</label>
                                 <input type="file" name="certificates" class="form-control" multiple="multiple" accept=".pdf"> 
                             </div>
+                            -->
                         </div>  
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary">SUBMETER CANDIDATURA</button>  
