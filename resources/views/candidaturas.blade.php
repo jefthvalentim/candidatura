@@ -7,7 +7,7 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Listagens de candidaturas</h1>
-         
+
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -22,18 +22,27 @@
                       <th>Sobrenome</th>
                       <th>Email</th>
                       <th>Telefone</th>
+                      <th>BI / Passaporte</th>
                       <th>Data Nascimento</th>
+                      <th>Carta motivacional</th>
+                      <th>Vaga</th>
+                      <th>CV</th>
                     </tr>
                   </thead>
                  
                   <tbody>
                         @foreach($candidaturas as $candidatura)
                             <tr>
-                                <td>{{ $candidatura->nome }}</td>
-                                <td>{{ $candidatura->sobrenome }}</td>
+                                <td>{{ $candidatura->first_name }}</td>
+                                <td>{{ $candidatura->last_name }}</td>
                                 <td>{{ $candidatura->email }}</td>
-                                <td>{{ $candidatura->telefone }}</td>
-                                <td>{{ $candidatura->data_nascimento }}</td>
+                                <td>{{ $candidatura->telephone }}</td>
+                                <td>{{ $candidatura->bi_passaport }}</td>
+                                <td>{{ $candidatura->birthday }}</td>
+                                <td>{{ $candidatura->motivational_letter }}</td>
+                                <td>{{ $candidatura->vaga }}</td>
+                                <td><a href="{{ url('storage/cvs', $candidatura->cv) }}">Baixar Currículo</a></td>
+                                <td><a href="{{ route('candidatura.destroy', $candidatura->id) }}">Apagar</a></td>
                             </tr>
                         @endforeach
                   </tbody>
