@@ -15,13 +15,15 @@ class CreateCandidaturasTable extends Migration
     {
         Schema::create('candidaturas', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('sobrenome');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->date('birthday')->nullable();
+            $table->string('bi_passaport')->nullable();
             $table->string('email')->nullable();
-            $table->string('telefone')->nullable();
-            $table->text('descricacao')->nullable();
-            $table->date('data_nascimento')->nullable();
-            $table->string('file_path')->nullable();
+            $table->string('telephone')->nullable();
+            $table->text('motivational_letter')->nullable();
+            $table->text('vaga')->nullable();
+            $table->string('cv')->nullable();
             $table->timestamps();
         });
     }
