@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
   <link rel="shortcut icon" href="1.png" type="image/x-icon">
-    <title>Candidaturas</title>
+    <title>@yield('title')</title>
 
     <!-- Custom fonts for this template -->
     <link href="{{ asset('css/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -22,6 +22,9 @@
 
     <!-- Custom styles for this page -->
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <style>
+      .card-body { padding: .45rem!important; }
+    </style>
 
 </head>
 
@@ -38,7 +41,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">MStability</div>
+        <div class="sidebar-brand-text mx-3">Maltaimedia</div>
       </a>
 
       <!-- Divider -->
@@ -54,11 +57,16 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('portfolio.index') }}">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Portfólio</span></a>
+      </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('candidatura.index') }}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Candidaturas</span></a>
+        <a class="nav-link" href="{{ route('message.index') }}">
+          <i class="fas fa-fw fa-chat"></i>
+          <span>Mensagens</span></a>
       </li>
 
       <!-- Divider -->
@@ -127,7 +135,9 @@
 
         </nav>
         <!-- End of Topbar -->
-            @yield('content')
+            <div id="app">
+              @yield('content')
+            </div>
         
       </div>
       <!-- End of Main Content -->
@@ -179,12 +189,13 @@
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('js/jquery.min.js') }}"></script>
   <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   <!-- Core plugin JavaScript-->
   <script src="{{ asset('js/jquery.easing.min.js') }}"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  <script src="js/sb-admin-2.js"></script>
 
   <!-- Page level plugins -->
   <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
@@ -192,6 +203,8 @@
 
   <!-- Page level custom scripts -->
   <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
+  <script src="{{ asset('js/vue.min.js') }}"></script>
+  <script src="{{ asset('js/script.js') }}"></script>
 
 </body>
 

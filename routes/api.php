@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/portfolios', 'SiteController@index');
+Route::post('/send-form', 'SiteController@sendForm');
+
+/* use Illuminate\Support\Facades\File;
+
+File::link(storage_path('app/public'), public_path('storage')); */
+/* 
+<?php     $targetFolder = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public';     $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/public/storage';     symlink($targetFolder,$linkFolder);     echo 'Symlink process successfully completed'; ?> */
