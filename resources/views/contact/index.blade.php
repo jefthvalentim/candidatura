@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Mensagens')
 @section('content')
 
         <!-- Begin Page Content -->

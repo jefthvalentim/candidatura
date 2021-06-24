@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Listagem de Portfólios')
 @section('content')
         <!-- Begin Page Content -->
         <div class="container-fluid">

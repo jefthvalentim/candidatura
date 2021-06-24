@@ -59,13 +59,13 @@
 
       <li class="nav-item">
         <a class="nav-link" href="{{ route('portfolio.index') }}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-laptop-code"></i>
           <span>Portfólio</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="{{ route('message.index') }}">
-          <i class="fas fa-fw fa-chat"></i>
+          <i class="fas fa-fw fa-envelope"></i>
           <span>Mensagens</span></a>
       </li>
 

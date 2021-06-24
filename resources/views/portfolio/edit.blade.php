@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Actualizar Portfólio')
 @section('content')
 
 <div class="page-apresentation">

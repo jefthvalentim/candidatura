@@ -12,6 +12,16 @@ class ContactController extends Controller
         $messages = Contact::orderBy('created_at', 'desc')->paginate(10);
         return view('contact.index', compact('messages'));
     }
+    
+    public function read() {
+        $messages = Contact::where('read_at', '!=', null)->orderBy('created_at', 'desc')->paginate(10);
+        return view('contact.index', compact('messages'));
+    }
+
+    public function not_read() {
+        $messages = Contact::where('read_at', null)->orderBy('created_at', 'desc')->paginate(10);
+        return view('contact.index', compact('messages'));
+    }
 
     public function edit(Contact $message) {
         $message->read_at = now();

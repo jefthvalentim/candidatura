@@ -33,5 +33,7 @@ Route::post('/portfolio/gallery/{portfolio}', 'PortfolioController@storeGallery'
 Route::delete('/portfolio/{portfolio}', 'PortfolioController@destroy')->name('portfolio.destroy')->middleware('auth');
 Route::delete('/portfolio/gallery/{gallery}', 'PortfolioController@galleryDestroy')->name('portfolio.gallery.destroy')->middleware('auth');
 Route::get('/messages', 'ContactController@index')->name('message.index')->middleware('auth');
+Route::get('/messages/read', 'ContactController@read')->name('message.read')->middleware('auth');
+Route::get('/messages/not_read', 'ContactController@not_read')->name('message.not_read')->middleware('auth');
 Route::put('/message/edit/{message}', 'ContactController@edit')->name('message.edit')->middleware('auth');
 Route::delete('/message/delete/{message}', 'ContactController@destroy')->name('message.destroy')->middleware('auth');

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Detalhe do Portfólio')
 @section('content')
 <style>
     .item { position: absolute; text-align: center; font-size: 1.5em; line-height: 1.5em; }
@@ -13,20 +14,12 @@
                 <a href="{{ route('portfolio.index') }}" class="btn btn-primary">Voltar</a>
             </div>
 
-            <h6 class="m-0 font-weight-bold text-primary">{{ $portfolio->name }} - {{ $portfolio->category->name }}</h6>
-            <div class="row">
-                <form action="{{ route('portfolio.gallery.store', $portfolio->id) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group col-md-6">
-                        <label for="">Carregar Galeria <span class="text-danger">*</span></label>
-                        <input type="file" multiple name="galleries[]" class="form-control" required="required">
-                    </div>
-                    
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">Actualizar Portfólio</button>  
-                    </div>
-                </form>
-            </div>
+            <h6 class="m-0 font-weight-bold text-primary">{{ $portfolio->name }} - 
+                @foreach($portfolio->categories as $category)
+                    {{ $category->category->name }}
+                @endforeach
+            </h6>
+           
             <!-- DataTales Example -->
             <div class="row">
                 
