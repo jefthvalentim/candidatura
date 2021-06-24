@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <!-- Card Body -->
-                            <div class="card-body">
+                            <div class="card-body card-body-2">
                                 <img src="{{ url('storage/portfolios/' . $portfolio->id, $portfolio->midia) }}" style="max-width: 100%" />
                             </div>
                             <form action="{{ route('portfolio.highlight', $portfolio->id) }}" method="post" id="portfolio-highlight-{{$portfolio->id}}">

@@ -7,17 +7,24 @@
         <div class="row pt-5 pb-5">
             <div class="col-md-5">               
                 <div class="page-apresentation-form shadow p-3">
-                    <h4 class="text-uppercase font-weight-bold text-center">Novo Projecto<span class="text-black"> do Portfólio</span></h4>
+                    <h4 class="text-uppercase font-weight-bold text-center">Novo Projecto<span class="text-black"> do Portfólio</span><span v-html="type"></span></h4>
                     <form action="{{ route('portfolio.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-12">
                                 <label>Nome do Portfólio<span class="text-danger">*</span></label>
                                 <input type="text" name="name" class="form-control" required="required">
                             </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Data de criação<span class="text-danger">*</span></label>
+                                <input type="date" name="date" class="form-control" required="required">
+                            </div>
                             <div class="form-group col-md-6">
                                 <label>Tipo de Portfólio<span class="text-danger">*</span></label>
-                                <select name="type" class="form-control" required>
+                                <select name="type" class="form-control" required v-model="type">
                                     <option value="1">Imagem</option>
                                     <option value="2">Vídeo</option>
                                 </select>
@@ -39,12 +46,17 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="">Carregar Capa <span class="text-danger">*</span></label>
-                                <input type="file" @change="selectedFile" name="midia" class="form-control" accept=".png, .jpg, .mp4, .jpeg" required="required">
+                                <input type="file" @change="selectedFile" name="midia" class="form-control" accept=".png, .jpg, .jpeg, .gif" required="required">
                             </div>
                             
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-6" v-if="type == 1">
                                 <label for="">Carregar Galeria <span class="text-danger">*</span></label>
-                                <input type="file" @change="selectedFiles" multiple name="galleries[]" accept=".png, .jpg, .mp4, .jpeg" class="form-control">
+                                <input type="file" @change="selectedFiles" multiple name="galleries[]" accept=".png, .jpg, .jpeg, .gif" class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-6" v-else>
+                                <label for="">Vídeo <span class="text-danger">*</span></label>
+                                <input type="text" name="video" class="form-control" v-model="url">
                             </div>
                            <!-- 
                                <div class="form-group col-md-4">
@@ -73,18 +85,21 @@
             
             <div class="col-md-5"> 
                 <template>
-                    <img :src="src" alt="" v-if="type == 'image'" class="img-fluid" style="max-height: 500px">
-                    <video :src="src" controls v-if="type == 'video'" class="img-fluid"></video>
+                    <img :src="src" alt="" v-if="type_field == 'image'" class="img-fluid" style="max-height: 500px">
                 </template>
             </div>
         </div>   
 
-        <div class="row">
-            <div class="col-md-2 item my-2" v-for="(src, index) in medias" @click="deleteMedia(index)">
+        <div class="row" v-if="type == 1">
+            <div class="col-md-2 item my-2" v-for="(src, index) in medias">
                 <template>
-                    <img :src="src" alt="" v-if="type == 'image'" class="img-fluid">
-                    <video :src="src" controls v-if="type == 'video'" class="img-fluid"></video>
+                    <img :src="src" alt="" class="img-fluid">
                 </template>
+            </div>
+        </div>
+        <div class="row" v-else>
+            <div class="col-md-5">
+                <iframe width="100%" height="350" :src="url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>

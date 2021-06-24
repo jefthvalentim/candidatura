@@ -19,8 +19,8 @@ class ContactController extends Controller
         return redirect()->back()->with(['success' => 'Mensagem visualizada']);
     }
 
-    public function destroy(Contact $contact) {
-        $contact->delete();
+    public function destroy(Contact $message) {
+        $message->delete();
         return redirect()->back();
     }
 }

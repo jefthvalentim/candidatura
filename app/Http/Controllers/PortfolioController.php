@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Portfolio;
 use App\Category;
 use App\CategoryPortfolio;
+use Storage;
 use App\Gallery;
 use Illuminate\Http\Request;
 
@@ -52,8 +53,9 @@ class PortfolioController extends Controller
         $portfolio = Portfolio::create([
             'name' => $request->name,
             'description' => $request->description,
-            'category_id' => 1,
             'type' => $request->type,
+            'video' => $request->video,
+            'date' => $request->date,
             'midia' => ''
         ]);
         
@@ -69,6 +71,7 @@ class PortfolioController extends Controller
             $name = md5(time()) . '.' . $request->midia->extension();
             $request->midia->storeAs('public/portfolios/' . $portfolio->id, $name);
             $portfolio->midia = $name;
+
             $portfolio->save();
 
             if($request->galleries){
@@ -130,8 +133,10 @@ class PortfolioController extends Controller
     {
         //
         $item = Portfolio::where('highlight', true)->first();
-        $item->highlight = false;
-        $item->save();
+        if($item) {
+            $item->highlight = false;
+            $item->save();
+        }
         $portfolio->highlight = true;
         $portfolio->save();
         return redirect()->back()->with(['success' => 'Portfólio destacado com sucesso!']);
@@ -145,7 +150,10 @@ class PortfolioController extends Controller
      */
     public function destroy(Portfolio $portfolio)
     {
-        //
+        $dirname = storage_path('app/public'). '/portfolios/' . $portfolio->id;
+        array_map('unlink', glob("$dirname/*.*"));
+        rmdir($dirname);
+            
         $portfolio->delete();
         return redirect()->back()->with(['success' => 'Portfólio eliminado']);
     }

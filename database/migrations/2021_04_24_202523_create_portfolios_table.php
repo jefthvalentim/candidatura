@@ -20,6 +20,8 @@ class CreatePortfoliosTable extends Migration
             $table->text('description');
             $table->boolean('highlight')->default(false);
             $table->integer('type')->default(1);
+            $table->string('video')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

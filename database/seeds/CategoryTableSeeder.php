@@ -13,7 +13,7 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
         //
-        $categories = ['Fotografia', 'Motion Graphic', 'Design Gráfico', 'Web Design', '2D Animation'];
+        $categories = ['FOTOGRAFIA', 'MOTION GRAPHIC', 'DESIGN GRÁFICO', 'WEB DESIGN', 'ANIMAÇÂO 2D'];
 
         foreach($categories as $category)
         {

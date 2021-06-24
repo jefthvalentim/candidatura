@@ -2,7 +2,9 @@ var app = new Vue({
     el: '#app',
     data: {
         file: null,
-        type: null,
+        type: 1,
+        url: '',
+        type_field: 'image',
         src: '',
         medias: []
     },
@@ -31,12 +33,8 @@ var app = new Vue({
 
             if (this.file) {
                 if (/\.(jpe?g|png|gif)$/i.test(this.file.name)) {
-                    this.type = 'image'
+                    this.type_field = 'image'
            
-                    reader.readAsDataURL(this.file)
-                }
-                if (/\.(avi|mp4|webm)$/i.test(this.file.name)) {
-                    this.type = 'video'
                     reader.readAsDataURL(this.file)
                 }
             }
@@ -60,12 +58,12 @@ var app = new Vue({
 
                 if (element) {
                     if (/\.(jpe?g|png|gif)$/i.test(element.name)) {
-                        this.type = 'image'
+                        this.type_field = 'image'
             
                         reader.readAsDataURL(element)
                     }
                     if (/\.(avi|mp4|webm)$/i.test(element.name)) {
-                        this.type = 'video'
+                        this.type_field = 'video'
                         reader.readAsDataURL(element)
                     }
                 } 

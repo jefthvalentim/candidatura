@@ -23,7 +23,7 @@
     <!-- Custom styles for this page -->
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <style>
-      .card-body { padding: .45rem!important; }
+      .card-body-2 { padding: .45rem!important; }
     </style>
 
 </head>
