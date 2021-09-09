@@ -77,12 +77,15 @@ class PortfolioController extends Controller
             $portfolio->save();
 
             if($request->galleries){
+                $order = 1;
                 foreach($request->galleries as $image){
                     $name = md5(time() . $image->getClientOriginalName()) . '.' . $image->extension();
                     $image->storeAs('public/portfolios/' . $portfolio->id, $name);
                     $portfolio->gallery()->create([
-                        'image' => $name
+                        'image' => $name,
+                        'order' => $order
                     ]);
+                    $order++;
                 }
             }
         }
@@ -99,7 +102,9 @@ class PortfolioController extends Controller
     public function show(Portfolio $portfolio)
     {
         //
-        return view('portfolio.show', compact('portfolio'));
+        return view('portfolio.show', ['portfolio' => $portfolio->load(array('gallery' => function($query) {
+            $query->orderBy('galleries.order');
+        }))]);
     }
 
     /**
@@ -188,6 +193,19 @@ class PortfolioController extends Controller
         //
         $item = Portfolio::where('order', $request->value)->first();
         $item2 = Portfolio::where('order', $request->order)->first();
+        $item->order = $request->order;
+        $item2->order = $request->value;
+        $item->save();        
+        $item2->save();
+        
+        return true;
+    }
+
+    public function changeOrderGallery(Request $request)
+    {
+        //
+        $item = Gallery::where('order', $request->value)->where('portfolio_id', $request->portfolio_id)->first();
+        $item2 = Gallery::where('order', $request->order)->where('portfolio_id', $request->portfolio_id)->first();
         $item->order = $request->order;
         $item2->order = $request->value;
         $item->save();        

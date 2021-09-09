@@ -10,7 +10,9 @@ class SiteController extends Controller
 {
     //
     public function index() {
-        return Portfolio::orderBy('highlight', 'DESC')->get()->load('gallery');
+        return Portfolio::orderBy('order')->get()->load(array('gallery' => function($query) {
+            $query->orderBy('galleries.order');
+        }));
     }
 
     public function sendForm(Request $contact) {

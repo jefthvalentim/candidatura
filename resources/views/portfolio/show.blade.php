@@ -21,10 +21,10 @@
             </h6>
            
             <!-- DataTales Example -->
-            <div class="row">
+            <div class="row default">
                 
                 @foreach($portfolio->gallery as $gallery)
-                    <div class="col-md-4">
+                    <div class="col-md-4 item" data-order="{{ $gallery->order }}" data-id="{{ $portfolio->id }}">
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -32,6 +32,15 @@
                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                                     </a>
+                                    <select name="" class="selectOrderGallery">
+                                        @for($cont = 1; $cont <= $portfolio->gallery->count(); $cont++)
+                                            @if($cont == $gallery->order)
+                                                <option value="{{ $cont }}" selected>{{ $cont }}</option>
+                                            @else
+                                                <option value="{{ $cont }}">{{ $cont }}</option>
+                                            @endif
+                                        @endfor
+                                    </select>
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item" href="#" onclick="event.preventDefault(); if(confirm('Tem certeza que deseja efectuar esta operação?')) document.getElementById('gallery-{{$gallery->id}}').submit();">Eliminar</a>
                                     </div>

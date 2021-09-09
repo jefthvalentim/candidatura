@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/portfolios', 'SiteController@index');
 Route::post('/send-form', 'SiteController@sendForm');
 Route::post('/portfolios/change-order', 'PortfolioController@changeOrder');
+Route::post('/portfolios/gallery/change-order', 'PortfolioController@changeOrderGallery');
 
 /* use Illuminate\Support\Facades\File;
 
