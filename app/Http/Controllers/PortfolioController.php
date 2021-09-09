@@ -14,7 +14,7 @@ class PortfolioController extends Controller
 
     public function construct()
     {
-        $this->middleware('auth'); 
+        $this->middleware('auth')->except('changeOrder'); 
     }
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class PortfolioController extends Controller
     public function index()
     {
         //
-        $portfolios = Portfolio::paginate(10);
+        $portfolios = Portfolio::orderBy('order')->paginate(10);
         return view('portfolio.index', compact('portfolios'));
     }
 
@@ -50,13 +50,15 @@ class PortfolioController extends Controller
     {
         //
         
+        $order = Portfolio::orderBy('order', 'Desc')->first();
         $portfolio = Portfolio::create([
             'name' => $request->name,
             'description' => $request->description,
             'type' => $request->type,
             'video' => $request->video,
             'date' => $request->date,
-            'midia' => ''
+            'midia' => '',
+            'order' => $order->order + 1
         ]);
         
         if($portfolio){
@@ -179,5 +181,18 @@ class PortfolioController extends Controller
         }
 
         return redirect()->route('portfolio.show', $portfolio->id)->with('success','Imagens adicionadas na galeria.');
+    }
+
+    public function changeOrder(Request $request)
+    {
+        //
+        $item = Portfolio::where('order', $request->value)->first();
+        $item2 = Portfolio::where('order', $request->order)->first();
+        $item->order = $request->order;
+        $item2->order = $request->value;
+        $item->save();        
+        $item2->save();
+        
+        return true;
     }
 }

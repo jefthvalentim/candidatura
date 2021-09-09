@@ -26,7 +26,7 @@
             <div class="row default">
             
                 @foreach($portfolios as $portfolio)
-                    <div class="col-md-3 item">
+                    <div class="col-md-3 item" data-order="{{ $portfolio->order }}">
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -41,6 +41,11 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                         <div class="dropdown-header">Acções:</div>
+                                        <select name="" class="selectOrder">
+                                            @for($cont = 1; $cont <= $portfolios->count(); $cont++)
+                                                <option value="{{ $cont }}">{{ $cont }}</option>
+                                            @endfor
+                                        </select>
                                         <a class="dropdown-item" href="{{ route('portfolio.show', $portfolio->id) }}">Detalhes</a>
                                         <a class="dropdown-item" href="{{ route('portfolio.edit', $portfolio->id) }}">Editar</a>
                                         <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('portfolio-highlight-{{$portfolio->id}}').submit();">Destacar</a>

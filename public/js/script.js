@@ -68,7 +68,6 @@ var app = new Vue({
                     }
                 } 
             }
-        
         },
 
         deleteMedia(pos) {
@@ -77,3 +76,42 @@ var app = new Vue({
         }
     }
 })
+
+$(document).on('change', '.selectOrder', function(){
+
+  let order = $(this).parent().parent().parent().parent().parent().attr('data-order')
+    let value = $(this).val()
+
+    $('[data-order=' + value + ']').attr('data-order', order)
+
+    $(this).parent().parent().parent().parent().parent().attr('data-order', value)
+
+    $.post('/api/portfolios/change-order', { value: value, order: order}).done(res => {
+
+        console.log(res)
+        var $fields, $container, sorted, index;
+            
+        $('.default').masonry('destroy');
+        $('.default').removeData('masonry');
+    
+        $container = $('.default');
+        $fields = $("div[data-order]", $container);
+        sorted = [];
+        $fields.detach().each(function() {
+            sorted[parseInt(this.getAttribute("data-order"), 10)] = this;
+        });
+        $container.html('')
+         sorted.forEach(function(element) {
+            $container.append(element);
+        });
+        $('.default').masonry({
+            // options
+            itemSelector: '.item'
+        }); 
+    })
+
+})
+
+$(document).on('click', '.dropdown .dropdown-menu', function (e) {
+    e.stopPropagation();
+});

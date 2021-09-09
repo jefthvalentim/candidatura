@@ -1,0 +1,7 @@
+.bg-grey { background: #fff; }
+.text-orange { color: #FF6637; }
+.bg-orange { background: #FF6637; color: #fff; }
+.bg-black { background: #000; color: #ff8328; }
+.bg-black:hover { color: #ff8328; }
+.bg-orange:hover { color: #fff; }
+.bg-gradient-primary { background-color: #121212!important; }

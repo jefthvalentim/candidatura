@@ -21,4 +21,5 @@ class SiteController extends Controller
             'message' => $contact->message,
         ]);
     }
+    
 }
