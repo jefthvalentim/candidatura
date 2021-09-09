@@ -43,7 +43,11 @@
                                         <div class="dropdown-header">Acções:</div>
                                         <select name="" class="selectOrder">
                                             @for($cont = 1; $cont <= $portfolios->count(); $cont++)
-                                                <option value="{{ $cont }}">{{ $cont }}</option>
+                                                @if($cont == $portfolio->order)
+                                                    <option value="{{ $cont }}" selected>{{ $cont }}</option>
+                                                @else
+                                                    <option value="{{ $cont }}">{{ $cont }}</option>
+                                                @endif
                                             @endfor
                                         </select>
                                         <a class="dropdown-item" href="{{ route('portfolio.show', $portfolio->id) }}">Detalhes</a>

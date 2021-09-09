@@ -79,8 +79,10 @@ var app = new Vue({
 
 $(document).on('change', '.selectOrder', function(){
 
-  let order = $(this).parent().parent().parent().parent().parent().attr('data-order')
+    let order = $(this).parent().parent().parent().parent().parent().attr('data-order')
     let value = $(this).val()
+
+    $('[data-order=' + value + ']').find('select').val(order);
 
     $('[data-order=' + value + ']').attr('data-order', order)
 
