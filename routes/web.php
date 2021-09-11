@@ -37,3 +37,5 @@ Route::get('/messages/read', 'ContactController@read')->name('message.read')->mi
 Route::get('/messages/not_read', 'ContactController@not_read')->name('message.not_read')->middleware('auth');
 Route::put('/message/edit/{message}', 'ContactController@edit')->name('message.edit')->middleware('auth');
 Route::delete('/message/delete/{message}', 'ContactController@destroy')->name('message.destroy')->middleware('auth');
+Route::get('/settings', 'UserController@index')->name('setting.index')->middleware('auth');
+Route::put('/settings', 'UserController@update')->name('setting.update')->middleware('auth');
