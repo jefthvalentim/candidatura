@@ -22,10 +22,10 @@
                 </div>
             @endif 
             <!-- DataTales Example -->
-            <div class="row">
+            <div class="row default">
             
                 @foreach($messages as $message)
-                    <div class="col-md-4">
+                    <div class="col-md-4 item">
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -44,6 +44,10 @@
                             </div>
                             <!-- Card Body -->
                             <div class="card-body {{ $message->read_at == null ? 'alert-primary' : '' }}">
+                                <div class="row pt-2 pb-4">
+                                    <div class="col-md-6"><a href="tel:{{ $message->phone}}">{{ $message->phone}}</a></div>
+                                    <div class="col-md-6"><a href="mailto:{{ $message->email}}">{{ $message->email }}</a></div>
+                                </div>
                                 {{ $message->message }}
                             </div>
                             <form action="{{ route('message.edit', $message->id) }}" method="post" id="message-view-{{$message->id}}">
